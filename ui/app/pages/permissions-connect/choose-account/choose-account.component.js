@@ -196,7 +196,7 @@ export default class ChooseAccount extends Component {
           iconName={targetDomainMetadata.origin}
           headerTitle={t('connectWithMetaMask')}
           headerText={accounts.length > 0
-            ? t('chooseAccountsToUse')
+            ? t('selectAccounts')
             : t('connectAccountOrCreate')
           }
         />
