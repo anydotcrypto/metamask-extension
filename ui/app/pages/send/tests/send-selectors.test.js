@@ -6,7 +6,6 @@ import {
 } from '../../../selectors'
 import {
   getBlockGasLimit,
-  getAmountConversionRate,
   getConversionRate,
   getCurrentCurrency,
   getCurrentNetwork,
@@ -21,7 +20,6 @@ import {
   getSelectedToken,
   getSelectedTokenContract,
   getSelectedTokenExchangeRate,
-  getSelectedTokenToFiatRate,
   getSendAmount,
   sendAmountIsInError,
   getSendEditingTransactionId,
@@ -93,34 +91,6 @@ describe('send selectors', function () {
             name: 'Send Account 4',
           },
         ]
-      )
-    })
-  })
-
-  // describe('autoAddToBetaUI()', () => {
-  //   it('should', () => {
-  //     assert.deepEqual(
-  //       autoAddToBetaUI(mockState),
-
-  //     )
-  //   })
-  // })
-
-  describe('getAmountConversionRate()', function () {
-    it('should return the token conversion rate if a token is selected', function () {
-      assert.equal(
-        getAmountConversionRate(mockState),
-        2401.76400654
-      )
-    })
-
-    it('should return the eth conversion rate if no token is selected', function () {
-      const editedMockState = {
-        metamask: Object.assign({}, mockState.metamask, { selectedTokenAddress: null }),
-      }
-      assert.equal(
-        getAmountConversionRate(editedMockState),
-        1200.88200327
       )
     })
   })
@@ -302,20 +272,9 @@ describe('send selectors', function () {
   })
 
   describe('getSelectedTokenExchangeRate()', function () {
-    it('should return the exchange rate for the selected token', function () {
-      assert.equal(
-        getSelectedTokenExchangeRate(mockState),
-        2.0
-      )
-    })
-  })
-
-  describe('getSelectedTokenToFiatRate()', function () {
-    it('should return rate for converting the selected token to fiat', function () {
-      assert.equal(
-        getSelectedTokenToFiatRate(mockState),
-        2401.76400654
-      )
+    it('returns token exchange rate for first token', function () {
+      const tokenRate = getSelectedTokenExchangeRate(mockState)
+      assert.equal(tokenRate, 0.00039345803819379796)
     })
   })
 
