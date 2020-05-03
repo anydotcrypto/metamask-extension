@@ -78,16 +78,6 @@ export function getSelectedTokenContract (state) {
     : null
 }
 
-export function getSelectedTokenExchangeRate (state) {
-  const tokenExchangeRates = state.metamask.tokenExchangeRates
-  const selectedToken = getSelectedToken(state) || {}
-  const { symbol = '' } = selectedToken
-  const pair = `${symbol.toLowerCase()}_eth`
-  const { rate: tokenExchangeRate = 0 } = (tokenExchangeRates && tokenExchangeRates[pair]) || {}
-
-  return tokenExchangeRate
-}
-
 export function getSendAmount (state) {
   return state.metamask.send.amount
 }
@@ -155,14 +145,6 @@ export function getSendEnsResolution (state) {
 
 export function getSendEnsResolutionError (state) {
   return state.metamask.send.ensResolutionError
-}
-
-export function getTokenExchangeRate (state, tokenSymbol) {
-  const pair = `${tokenSymbol.toLowerCase()}_eth`
-  const tokenExchangeRates = state.metamask.tokenExchangeRates
-  const { rate: tokenExchangeRate = 0 } = tokenExchangeRates[pair] || {}
-
-  return tokenExchangeRate
 }
 
 export function getUnapprovedTxs (state) {

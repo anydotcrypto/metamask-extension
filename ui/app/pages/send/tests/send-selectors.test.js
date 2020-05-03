@@ -18,7 +18,6 @@ import {
   getSelectedIdentity,
   getSelectedToken,
   getSelectedTokenContract,
-  getSelectedTokenExchangeRate,
   getSendAmount,
   sendAmountIsInError,
   getSendEditingTransactionId,
@@ -31,7 +30,6 @@ import {
   getSendTo,
   getSendToAccounts,
   getTokenBalance,
-  getTokenExchangeRate,
   getUnapprovedTxs,
   gasFeeIsInError,
   getGasLoadingError,
@@ -261,13 +259,6 @@ describe('send selectors', function () {
     })
   })
 
-  describe('getSelectedTokenExchangeRate()', function () {
-    it('returns token exchange rate for first token', function () {
-      const tokenRate = getSelectedTokenExchangeRate(mockState)
-      assert.equal(tokenRate, 0.00039345803819379796)
-    })
-  })
-
   describe('getSendAmount()', function () {
     it('should return the send.amount', function () {
       assert.equal(
@@ -435,15 +426,6 @@ describe('send selectors', function () {
       assert.equal(
         getTokenBalance(mockState),
         3434
-      )
-    })
-  })
-
-  describe('getTokenExchangeRate()', function () {
-    it('should return the passed tokens exchange rates', function () {
-      assert.equal(
-        getTokenExchangeRate(mockState, 'GHI'),
-        31.01
       )
     })
   })
