@@ -10,7 +10,6 @@ import {
   getCurrentCurrency,
   getCurrentNetwork,
   getNativeCurrency,
-  getForceGasMin,
   getGasLimit,
   getGasPrice,
   getGasTotal,
@@ -151,15 +150,6 @@ describe('send selectors', function () {
       assert.equal(
         getCurrentNetwork(mockState),
         '3'
-      )
-    })
-  })
-
-  describe('getForceGasMin()', function () {
-    it('should get the send.forceGasMin property', function () {
-      assert.equal(
-        getForceGasMin(mockState),
-        true
       )
     })
   })
